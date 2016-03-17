@@ -1,7 +1,8 @@
-module PSN
+module PlayStationNetwork
   module API
     include HTTParty
 
+    base_uri ''
 
     def self.config
       @@config

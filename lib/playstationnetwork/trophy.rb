@@ -1,4 +1,4 @@
-module PSN
+module PlayStationNetwork
 
   class Trophy
 

@@ -1,4 +1,4 @@
-module PSN
+module PlayStationNetwork
   class Games
     attr_accessor :total_games, :offset, :limit, :games
 

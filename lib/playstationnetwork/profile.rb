@@ -1,4 +1,4 @@
-module PSN
+module PlayStationNetwork
   class Profile
     attr_accessor :avatar,
                   :username,
@@ -16,11 +16,10 @@ module PSN
       self.level      = level
       self.progress   = progress
       self.trophies   = trophies
-      self.games      = games
     end
 
     def self.find(username)
-      response = PSN::API.get("/#{username}")
+      response = PlayStationNetwork::API.get("/#{username}")
 
       if response.success?
         self.new(
