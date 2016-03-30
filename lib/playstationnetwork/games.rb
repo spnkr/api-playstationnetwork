@@ -10,10 +10,10 @@ module PlayStationNetwork
     end
 
     def self.find(username)
-      response = PSN::API.get("/#{username}/trophies")
+      response = PlayStationNetwork::API.get("/#{username}/trophies")
 
       if response.success?
-        self.new(
+        new(
           response['totalResults'],
           response['offset'],
           response['limit'],

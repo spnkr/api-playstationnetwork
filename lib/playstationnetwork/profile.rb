@@ -1,6 +1,7 @@
 module PlayStationNetwork
   class Profile
-    attr_accessor :avatar,
+    attr_accessor :id,
+                  :avatar,
                   :username,
                   :about,
                   :membership,
@@ -8,7 +9,8 @@ module PlayStationNetwork
                   :progress,
                   :trophies
 
-    def initialize(avatar, username, about, membership, level, progress, trophies)
+    def initialize(id, avatar, username, about, membership, level, progress, trophies)
+      self.id         = id
       self.avatar     = avatar
       self.username   = username
       self.about      = about
@@ -23,6 +25,7 @@ module PlayStationNetwork
 
       if response.success?
         self.new(
+          response['npId'],
           response['avatarUrl'],
           response['onlineId'],
           response['aboutMe'],
