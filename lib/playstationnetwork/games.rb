@@ -9,8 +9,8 @@ module PlayStationNetwork
       self.games       = games
     end
 
-    def self.find(username)
-      response = PlayStationNetwork::API.get("/#{username}/trophies")
+    def self.find(username, offset = 0)
+      response = PlayStationNetwork::API.get("/#{username}/trophies/o/#{offset}")
 
       if response.success?
         new(
