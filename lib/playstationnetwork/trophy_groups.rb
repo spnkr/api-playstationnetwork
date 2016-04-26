@@ -1,6 +1,6 @@
 module PlayStationNetwork
 
-  class TrophyGroup
+  class TrophyGroups
     attr_accessor :psn_id, :groups #:group_id, :name, :description, :cover, :defined_trophies
 
     def initialize(psn_id, groups) # group_id, name, description, cover, defined_trophies)

@@ -1,6 +1,6 @@
 module PlayStationNetwork
 
-  class Trophy
+  class Trophies
     attr_accessor :psn_id, :group_id, :trophies #, :trophy_id, :hidden, :type, :name, :description, :cover, :rarity, :earned_rate
 
     def initialize(psn_id, group_id, trophies)# trophy_id, hidden, type, name, description, cover, rarity, earned_rate)
@@ -24,6 +24,28 @@ module PlayStationNetwork
         new(
           game_id,
           group_id,
+          response['trophies']
+          # response['trophyId'],
+          # response['trophyHidden'],
+          # response['trophyType'],
+          # response['trophyName'],
+          # response['trophyDetail'],
+          # response['trophyIconUrl'],
+          # response['trophyRare'],
+          # response['trophyEarnedRate']
+        )
+      else
+        raise response.response
+      end
+    end
+
+    def self.all(username, game_id)
+      response = PlayStationNetwork::API.get("/#{username}/trophies/#{game_id}")
+
+      if response.success?
+        new(
+          game_id,
+          nil,
           response['trophies']
           # response['trophyId'],
           # response['trophyHidden'],
