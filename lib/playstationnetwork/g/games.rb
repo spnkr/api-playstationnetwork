@@ -22,8 +22,8 @@ module PlayStationNetwork
       # => ps4 returns all PS4 games
       #
       def self.all(psn_platform = 'all')
-        response = PlayStationNetwork::API.post('/psnListGames',
-                   PlayStationNetwork::API.config[:body].merge({ platform: psn_platform }))
+        options  = PlayStationNetwork::API.config.merge({ platform: psn_platform })
+        response = PlayStationNetwork::API.post('/psnListGames', body: options)
 
         sanitized_response = response.gsub('<?xml version=\"1.0\"?>', '').gsub('<\/', '</').tr('"', '')
         parsed_response    = Hash.from_xml(sanitized_response)

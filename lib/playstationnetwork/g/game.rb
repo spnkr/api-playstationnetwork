@@ -55,8 +55,8 @@ module PlayStationNetwork
       end
 
       def self.find(psn_game_id)
-        response = PlayStationNetwork::API.post("/psnGetGame",
-                   PlayStationNetwork::API.config[:body].merge({ npcommid: psn_game_id }))
+        options  = PlayStationNetwork::API.config.merge({ npcommid: psn_game_id })
+        response = PlayStationNetwork::API.post('/psnGetGame', body: options)
 
         if response.success?
           parsed = JSON.parse(response)

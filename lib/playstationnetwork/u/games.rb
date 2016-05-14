@@ -10,8 +10,8 @@ module PlayStationNetwork
       end
 
       def self.all(psn_user_id)
-        response = PlayStationNetwork::API.post('/psnGetUserGames',
-                   PlayStationNetwork::API.config[:body].merge({ user_id: psn_user_id }))
+        options  = PlayStationNetwork::API.config.merge({ user_id: psn_user_id })
+        response = PlayStationNetwork::API.post('/psnGetUserGames', body: options)
 
         if response.success?
           parsed = JSON.parse(response)

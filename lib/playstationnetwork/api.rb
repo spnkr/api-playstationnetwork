@@ -6,11 +6,9 @@ module PlayStationNetwork
 
     def self.config
       {
-        body: {
-          api_key: '',
-          api_secret: '',
-          response_type: 'json'
-        }
+        api_key: '',
+        api_secret: '',
+        response_type: 'json'
       }
     end
   end
