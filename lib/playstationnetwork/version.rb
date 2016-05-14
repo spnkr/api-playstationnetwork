@@ -1,7 +1,9 @@
 module PlayStationNetwork
-  VERSION = '0.1.1'
+  VERSION = '1.0.0'
 
   # Changelog
+  #
+
   #
   # v0.0.1 - Initial
   # v0.0.2 - Added Trophy Information
@@ -9,5 +11,9 @@ module PlayStationNetwork
   # v0.1.0 - Pluralized Renamed Trophy and TrophyGroup classes
   # v0.1.1 - Added a convenient method 'all' on Trophies, without having to pass
   # the group id as an argument
+
+  #
+  # v1.0.0 - Introduces a new API, new endpoints and new format for requesting data
+  # it's basically a new gem
 
 end

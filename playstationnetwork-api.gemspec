@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Vlad Radulescu"]
   spec.email         = ["pacMakaveli90@gmail.co.uk"]
 
-  spec.summary       = %q{A ruby wrapper for PSN API}
-  spec.description   = %q{A ruby wrapper for PSN API}
+  spec.summary       = %q{A Ruby wrapper for Studio51's PlayStation Network API}
+  spec.description   = %q{A Ruby wrapper for Studio51's PlayStation Network API for grabbing User profiles, Games and Trophies}
   spec.homepage      = ''
   spec.license       = "MIT"
 
@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'httparty'
+  spec.add_dependency 'json'
+  spec.add_dependency 'activesupport'
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
