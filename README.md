@@ -50,9 +50,10 @@ Or install it yourself as:
 In your app, create a new initializer `playstationnetwork.rb` and add the following:
 
 ```
-PlayStationNetwork::API.new(<ENDPOINT>).config({
-  api_key: '<API_KEY>',
-  api_secret: '<API_SECRET>'
+PlayStationNetwork::API.configure do |config|
+  config.key = '<API_KEY>',
+  config.secret = '<API_SECRET>'
+  config.url = '<API_URL>'
 })
 ```
 
