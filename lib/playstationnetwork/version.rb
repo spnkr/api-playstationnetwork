@@ -1,5 +1,5 @@
 module PlayStationNetwork
-  VERSION ||= '2.0'
+  VERSION ||= '2.1.1'
 
   def self.changelog
     puts "
@@ -38,6 +38,15 @@ module PlayStationNetwork
         Trophies:   ::G::Trophies.all('NPWR00132_00')                  -> ::Game.new('NPWR00132_00').trophies
         All:        ::G::Games.all('all')                              -> ::Game.new().all(platform: 'ps4') # default 'all'
         Popular:    ::G::Games.popular()                               -> ::Game.new().all(popular: true)
+
+      v2.0.1
+        - When requesting Games for a specific user, return only the games instead of a full response which returns the same data that ::User.new('pacMakaveli90').profile already returns
+
+      v2.1.0
+        - Added 'verify: false' to HTTParty default options to skip any SSL certification errors. Temporary measure until we can figure how to fix this.
+
+      v2.1.1
+        - Tidy up the code and add a new option which should make internal calls cleaner
     "
   end
 end

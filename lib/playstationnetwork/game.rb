@@ -23,13 +23,13 @@ module PlayStationNetwork
 
     def details
       PlayStationNetwork::API.handle_response do
-        PlayStationNetwork::API.parse_response('/psnGetGame', body: options)
+        PlayStationNetwork::API.parse_response('/psnGetGame', options)
       end
     end
 
     def trophies      
       PlayStationNetwork::API.handle_response do
-        PlayStationNetwork::API.parse_response('/psnGetTrophies', body: options)
+        PlayStationNetwork::API.parse_response('/psnGetTrophies', options)
       end
     end
 

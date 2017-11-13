@@ -15,13 +15,13 @@ module PlayStationNetwork
 
     def profile
       PlayStationNetwork::API.handle_response do
-        PlayStationNetwork::API.parse_response('/psnGetUser', body: options)
+        PlayStationNetwork::API.parse_response('/psnGetUser', options)
       end
     end
 
     def games
       PlayStationNetwork::API.handle_response do
-        PlayStationNetwork::API.parse_response('/psnGetUserGames', body: options)
+        PlayStationNetwork::API.parse_response('/psnGetUserGames', options, 'games')
       end
     end
     
@@ -30,7 +30,7 @@ module PlayStationNetwork
         raise INVALID_NPCOMMID_TYPE unless npcommid.is_a?(String)
 
         @options = options.merge(npcommid: npcommid)
-        PlayStationNetwork::API.parse_response('/psnGetUserTrophies', body: options)
+        PlayStationNetwork::API.parse_response('/psnGetUserTrophies', options)
       end
     end
   end

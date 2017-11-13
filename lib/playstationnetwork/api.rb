@@ -25,6 +25,8 @@ module PlayStationNetwork
 
   module API
     include HTTParty
+    HTTParty::Basement.default_options.update(verify: false)
+    
     base_uri ""
 
     extend self
@@ -61,12 +63,16 @@ module PlayStationNetwork
       }
     end
 
-    def parse_response(url, body)
-      request = post(url, body)
+    def parse_response(url, options, reduce_to = {})
+      request = post(url, body: options)
 
       if request.success?
         begin
-          JSON.parse(request)
+          if reduce_to.blank?
+            JSON.parse(request)
+          else
+            JSON.parse(request)[reduce_to]
+          end
         rescue
           raise "There was a problem parsing the JSON. Most likely an API problem."
         end
