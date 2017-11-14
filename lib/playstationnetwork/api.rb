@@ -1,6 +1,6 @@
 module PlayStationNetwork
   class Configuration
-    attr_writer :key, :secret, :url
+    attr_writer :key, :secret, :url, :verify_ssl
 
     def key
       @key
@@ -12,6 +12,10 @@ module PlayStationNetwork
 
     def url
       @url
+    end
+
+    def verify_ssl
+      @verify_ssl
     end
   end
 
@@ -25,9 +29,8 @@ module PlayStationNetwork
 
   module API
     include HTTParty
-    HTTParty::Basement.default_options.update(verify: false)
     
-    base_uri ""
+    # base_uri ""
 
     extend self
 
@@ -43,7 +46,8 @@ module PlayStationNetwork
         raise MISSING_SECRET if PlayStationNetwork.configuration.secret.nil?
         raise MISSING_URL if PlayStationNetwork.configuration.url.nil?
 
-        self.base_uri PlayStationNetwork.configuration.url
+        default_options.update(base_uri: PlayStationNetwork.configuration.url)
+        default_options.update(verify: PlayStationNetwork.configuration.verify_ssl)
 
         return {
           api_key: PlayStationNetwork.configuration.key,

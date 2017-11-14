@@ -1,5 +1,5 @@
 module PlayStationNetwork
-  VERSION ||= '2.1.1'
+  VERSION ||= '2.1.2'
 
   def self.changelog
     puts "
@@ -47,6 +47,9 @@ module PlayStationNetwork
 
       v2.1.1
         - Tidy up the code and add a new option which should make internal calls cleaner
+
+      v2.1.2
+        - Added 'verify: false' option introduced in v2.1.0 as a configurable option in the initializer
     "
   end
 end
