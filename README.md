@@ -7,7 +7,7 @@ Retrieve User, Trophies and Game data from PlayStationNetwork.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'playstationnetwork-api', '~> 2.0'
+gem 'playstationnetwork-api', '~> 2.1'
 ```
 
 And then execute:
@@ -40,7 +40,7 @@ Or install it yourself as:
 
 
 #### Get all Games
-`PlayStationNetwork::Game.new().all(platform: 'ps4') # you don't have to pass an argument. By default, it will get all games.`
+`PlayStationNetwork::Game.new().all(platform: 'ps4') # you don't have to pass an argument. It will get all games by default.`
 
 #### Get Popular Games
 `PlayStationNetwork::Game.new().all(popular: true)`
@@ -54,10 +54,23 @@ PlayStationNetwork::API.configure do |config|
   config.key = '<API_KEY>',
   config.secret = '<API_SECRET>'
   config.url = '<API_URL>'
+  config.verify_ssl = boolean ( default is true )
 })
+
+# visit: http://www.psnleaderboard.com/ to get your key, secret and endpoint details
 ```
 
-Get Endpoint, your Key and Secret from: http://www.psnleaderboard.com/
+`verify_ssl` was introduced in v2.1.0 in order to fix an error returned by the API when communicating through SSL.
+If you get the following error when trying to access the API, set `verify_ssl` to `false`
+```
+{ 
+  success: false, 
+  code: 500, 
+  message: #<OpenSSL::SSL::SSLError: hostname '<API_URL>' does not match the server certificate>
+}
+```
+
+Please note this option may be removed in a future release when a proper fix will be implemented.
 
 ## Development
 

@@ -29,15 +29,14 @@ module PlayStationNetwork
 
   module API
     include HTTParty
-    
-    # base_uri ""
-
     extend self
 
-    MISSING_CONFIGURATION ||= "You must configure the PlayStationNetwork module before using this Gem. See the README.md for how to configure it"
-    MISSING_URL ||= "You must pass the 'url' to the PlayStationNetwork module before using this Gem. See the README.md for how to configure it"
-    MISSING_KEY ||= "You must pass your 'key' to the PlayStationNetwork module before using this Gem. See the README.md for how to configure it"
-    MISSING_SECRET ||= "You must pass your 'secret' to the PlayStationNetwork module before using this Gem. See the README.md for how to configure it"
+    DEFAULT_MESSAGE ||= 'the PlayStationNetwork module before using this gem. See the README.md for how to configure it'
+
+    MISSING_CONFIGURATION ||= 'You must configure ' + DEFAULT_MESSAGE
+    MISSING_URL ||= "You must pass the 'url' to " + DEFAULT_MESSAGE
+    MISSING_KEY ||= "You must pass your 'key' to " + DEFAULT_MESSAGE
+    MISSING_SECRET ||= "You must pass your 'secret' to " + DEFAULT_MESSAGE
 
     def request
       handle_response do
@@ -78,7 +77,7 @@ module PlayStationNetwork
             JSON.parse(request)[reduce_to]
           end
         rescue
-          raise "There was a problem parsing the JSON. Most likely an API problem."
+          raise 'There was a problem parsing the JSON. Most likely an API problem.'
         end
       else
         raise request.response

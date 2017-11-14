@@ -9,7 +9,7 @@ module PlayStationNetwork
     INVALID_PLATFORM_PARAM ||= "'platform' needs to be one of #{ GAMES_PARAMETERS_TYPES.join(', ') }"
     INVALID_POPULAR_TYPE ||= "'popular' parameter needs to be a Boolean"
     
-    def initialize(npcommid = "")
+    def initialize(npcommid = '')
       PlayStationNetwork::API.handle_response do
         raise INVALID_NPCOMMID_TYPE unless npcommid.is_a?(String)
 
@@ -52,7 +52,7 @@ module PlayStationNetwork
           begin
             parse_xml(request)['psn_api']
           rescue
-            raise "There was a problem parsing the XML response"
+            raise 'There was a problem parsing the XML response'
           end
         else
           raise request.response
