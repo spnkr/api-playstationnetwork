@@ -45,6 +45,29 @@ Or install it yourself as:
 #### Get Popular Games
 `PlayStationNetwork::Game.new().all(popular: true)`
 
+## NEW
+
+```
+The new PlayStationNetwork::Store.new() endpoint takes two additional arguments, 'region' and 'language'. Defaults to GB/en.
+More debugging is required, but so far the available regions are: ['GB/en', 'US/en']
+
+ex: PlayStationNetwork::Store.new('Rocket League', region: 'US', language: 'en')
+```
+
+#### Search PlayStation Store for a game(s)
+```
+PlayStationNetwork::Store.new('Rocket League').search()
+
+Optionally, you can pass a `game_type` argument which can be either 'Full Game' ( default ) or 'Bundle' . This will reduce the amount of data returned by the query.
+```
+
+#### Get PlayStation Store details for a given game
+```
+Important!: You must use this endpoint only when you have a store_id, usually returned by the search() endpoint.
+
+PlayStationNetwork::Store.new('EP2002-CUSA01433_00-ROCKETLEAGUEEU01').details()
+```
+
 ## Configuration
 
 In your app, create a new initializer `playstationnetwork.rb` and add the following:
@@ -82,8 +105,26 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/games-directory/api-playstationnetwork/. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The MIT License (MIT)
 
+Copyright (c) 2018 Vlad Radulescu, Studio51 Solutions, Studio51 Gaming Solutions
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
