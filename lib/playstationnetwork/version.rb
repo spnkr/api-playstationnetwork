@@ -1,5 +1,5 @@
 module PlayStationNetwork
-  VERSION ||= '2.1.2'
+  VERSION ||= '2.2'
 
   def self.changelog
     puts "
@@ -50,6 +50,9 @@ module PlayStationNetwork
 
       v2.1.2
         - Added 'verify: false' option introduced in v2.1.0 as a configurable option in the initializer
+
+      v2.2
+        - Added experimental PlayStation Store endpoint
     "
   end
 end
